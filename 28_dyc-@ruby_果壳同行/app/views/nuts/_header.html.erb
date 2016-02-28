@@ -1,0 +1,57 @@
+<nav class="nav-main navbar-default navbar-fixed-top navbar">
+	<div class="container">
+			<div class="navbar-header" id="logo">
+				<a class="navbar-brand" href="javascript:void(0)">果壳同行</a>
+			</div>
+			<div class="navbar-collapse collapse tab">
+				<section class="nav navbar-nav">
+					<ul class="nav navbar-nav nav-lis">
+						<li >
+							<%= link_to "首页", nuts_path%>
+						</li>
+						<li>
+							<%= link_to "活动", activites_all_events_path,class:"tab"%>
+						</li>
+						<li>
+							<%= link_to "树洞", hole_all_holes_path,class:"tab" %>
+						</li>
+					</ul>
+				</section>
+				<section >
+					<% if logged_in? %>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+								<a class="dropdown-toggle" role="button" id="cur_user" 
+									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<%= current_user.Name %> 
+									<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+									<li><%= link_to "未读回复", {:controller => "nuts" , :action => "user_profile", :name => session[:user_name] },class:'li_unread' %></li>
+									<li ><%= link_to "编辑个人信息", {:controller => "nuts" , :action => "user_profile", :name => session[:user_name] },class:'info' %></li>
+									<% if current_user.Name == "admin" %>
+                    					<li> <%= link_to "用户管理", users_path %></li>
+                  					<% end %>
+									<li><%= link_to "个人信息", edit_user_path(current_user) %></li>
+									<li class="divider" role="separator"></li>
+									<li> <%= link_to "退出", logout_path %> </li> 
+								</ul>
+							</li>
+						</ul>
+						
+					<% else %>
+						<ul class="nav navbar-nav navbar-right">
+							<li><%= link_to "登录", login_path  %></li>
+							<li><%= link_to "注册", signup_path %></li>
+						</ul>
+					<% end %>
+				</section>
+			</div>
+		
+	</div>
+</nav>
+		
+		
+		
+		
+		

@@ -1,0 +1,35 @@
+<%= render '/welcome/nav'%>
+
+<div class="container">
+  <h2>修改项目</h2>
+  <div class="toRight" style="height: 4px"></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table index-show table-hover" style="vertical-align: middle">
+        <tbody>
+        <% @projects.each do |r|%>
+            <tr class="bg-warning">
+              <td style="width: 65%">
+                <strong>&bull;&nbsp;</strong><%= r.name %>
+              </td>
+              <td style="font-size: 14px;text-align: center; width: 5%;text-decoration: underline" class="article-modify">
+                <%= link_to '编辑', projects_edt_path+'?'+'edt='+r.id.to_s%>
+              </td>
+              <td style="font-size: 14px;text-align: center; width: 5%;text-decoration: underline" class="article-modify">
+                <%= link_to '删除', projects_modify_path+'?'+'del='+r.id.to_s%>
+              </td>
+              <td style="font-size: 14px;text-align: center; width: 12%;text-decoration: underline" class="article-modify">
+                <%= link_to '添加状态', projects_add_status_path+'?'+'add='+r.id.to_s%>
+              </td>
+              <td style="font-size: 14px;text-align: center; width: 13%;text-decoration: underline" class="article-modify">
+                <%= link_to '添加成员', projects_add_members_path+'?project_id='+r.id.to_s%>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%= render 'welcome/footer' %>

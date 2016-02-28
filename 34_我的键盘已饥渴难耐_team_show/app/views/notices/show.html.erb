@@ -1,0 +1,28 @@
+<%= render '/welcome/nav'%>
+
+<div class="container" style="min-height: 390px">
+  <ol class="breadcrumb">
+    <li><a href="/">主页</a></li>
+    <li><a href="/notices">通知列表</a></li>
+    <li class="active"><%= @notice[:title]%></li>
+  </ol>
+  <div align="center">
+    <h1>
+      <%= @notice[:title]%>
+    </h1>
+  </div>
+  <div align="right">
+    <label class="show-date">
+      创建日期:
+      <%= @notice[:release_date] %><br>
+      浏览量:
+    </label>
+  </div>
+  <div>
+    <p style="text-indent: 0">
+      <%= @notice[:content]%>
+    </p>
+  </div>
+</div>
+
+<%= render 'welcome/footer' %>

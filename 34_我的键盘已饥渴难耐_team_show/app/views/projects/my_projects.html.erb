@@ -1,0 +1,67 @@
+<%= render 'welcome/nav' %>
+
+<div class="container" style="position:relative;min-height: 390px">
+
+  <div align="center" style="margin-bottom: 20px">
+    <h1>
+      我的项目
+    </h1>
+  </div>
+
+  <div class="panel panel-info " style="width: 25%;float: left">
+
+    <div class="panel-heading">
+      <h3 class="panel-title" align="center" style="font-weight: bold">
+        项目名称
+      </h3>
+    </div>
+
+    <div class="panel-body">
+      <% @my_projects.each do |p| %>
+          <div class="list-group-item">
+            <%= link_to p[:name], projects_path+'/'+p.id.to_s %>
+          </div>
+      <% end %>
+    </div>
+
+  </div>
+
+  </div>
+  <!--<div class="panel panel-primary" style="width: 70%;margin-left:5%;float: left">-->
+  <!--<div class="panel-heading">-->
+  <!--<h3 class="panel-title" align="center" style="font-weight: bold">-->
+  <!--详细内容-->
+  <!--</h3>-->
+  <!--</div>-->
+  <!--<div class="panel-body" style="color: black">-->
+  <!--<textarea rows="20" readonly="readonly" placeholder="这是项目的详细内容..." style="width: 100%;border-radius: 5px;border-color: #2aabd2">-->
+
+  <!--</textarea>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+
+  <%= render 'welcome/footer' %>
+  <!--<h1>these are your projects.</h1>-->
+  <!--<div class="container-fluid">-->
+  <!--<div class="row-fluid">-->
+  <!--<div class="col-xs-12">-->
+  <!--<table class="table">-->
+  <!--<thead>-->
+  <!--<tr>-->
+  <!--<th>-->
+  <!--name-->
+  <!--</th>-->
+  <!--<th>-->
+  <!--description-->
+  <!--</th>-->
+
+  <!--</tr>-->
+  <!--</thead>-->
+  <!--<tbody>-->
+
+  <!--</tbody>-->
+  <!--</table>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->

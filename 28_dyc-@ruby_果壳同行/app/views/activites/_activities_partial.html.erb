@@ -1,0 +1,22 @@
+<%@activities.each do |activity|%>
+	<div class="col-sm-6 col-md-3">
+		<div class="thumbnail">
+			<%if activity.picture_path%>
+			<% path = Rails.public_path.join('/uploadImage',activity.picture_path)%>
+		  	<img src= <%= path %> alt="活动海报"/>
+		  	<%else%>
+		  	<img src="/assets/account/logo.png" alt="活动海报"/>
+		  	<%end%>
+		  <div class="caption">
+			  <h4><%= link_to "#{activity.name}" ,activite_path(activity.id) %></h3>
+			  <p class="text-center ac_content"><%=activity.content%></p>
+			  <div class="user-interaction">
+			  		<%= link_to "赞 #{activity.recommend}" , {:controller => "activites" , :action => "add"}, 
+			  			{method: :post,data: {acid: activity.id , type: "recommend",name: session[:user_name]},class:"ui-link"} %>
+			  		<%= link_to "想参加 #{activity.want_join}" , {:controller => "activites" , :action => "add"}, 
+			  		{method: :post,data: {acid: activity.id , type: "want_join",name: session[:user_name]},class:"ui-link"} %>
+			  </div>
+		  </div>
+		</div>
+	</div>
+<%end%>

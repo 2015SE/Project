@@ -1,0 +1,32 @@
+<div class="reply clearfix">
+  <div class="avatar">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-1">
+          <div class="row">
+            <%= link_to c.user do %>
+                <%= gravatar_for(c.user,50)%>
+            <% end %>
+          </div>
+          <div class="row">
+            <div class="username">
+              <%= link_to c.user.name, c.user %>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-md-11">
+          <div class="row">
+            <%= c.content %>
+          </div>
+          <div class="row">
+            <span class="datetime">
+          <%= time_ago_in_words c.created_at %>前
+        </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

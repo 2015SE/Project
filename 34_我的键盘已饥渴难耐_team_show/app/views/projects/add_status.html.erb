@@ -1,0 +1,96 @@
+<%= render '/welcome/nav'%>
+<div class="container" style="min-height: 390px">
+  <h2 align="center">编辑</h2>
+  <div class="toMiddle" style="height: 4px;margin-bottom: 10px;margin-top: -5px"></div>
+  <div style="width: 95%;float: right;margin-right: 2.5%">
+    <ul class="nav nav-tabs nav-justified">
+      <li role="presentation" class="active"><a href="">项目</a></li>
+      <li role="presentation"><a href="../articles/modify">文章</a></li>
+      <li role="presentation"><a href="../notices/modify">通知</a></li>
+    </ul>
+    <div style="width:100%; border: solid #ddd 1px;border-top: none;height: 500px">
+      <div class="panel-body">
+        <form class="form-horizontal" role="form">
+          <div style="float: left;width: 40%">
+            <% @pid=session[:project_id] %>
+            <% @projects_all.each do |project|%>
+                <% if project[:id].to_s==@pid %>
+                    <div class="form-group" >
+                      <label class="col-sm-2 control-label" style="padding-top: 0 !important">
+                        标题
+                      </label>
+                      <div class="col-sm-10">
+                        <textarea readonly rows="1" class="form-control"><%= project.name%></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group" style="clear: both">
+                      <label class="col-sm-3 control-label" style="padding-top: 0 !important;margin-top: -10px">
+                        项目详情
+                      </label>
+                      <div class="col-sm-10" style="margin-left: 16.66666667%;">
+                        <textarea readonly rows="15" class="form-control"><%= project.description%></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-12" align="right" style="margin-top: 3%;">
+                        <%= link_to '编辑此项目', projects_edt_path+'?'+'edt='+session[:project_id],class: 'btn btn-success btn-sm'%>
+                      </div>
+                    </div>
+                    <% break %>
+                <%end%>
+            <%end%>
+          </div>
+          <div style="float: left;width: 60%;padding-left: 2.5%;padding-right: 2.5%">
+            <%= form_for :status_add, url: projects_add_status_handle_path do |f| %>
+            <div class="panel panel-primary project-panel">
+              <div class="panel-heading" style="font-size: inherit !important;padding-top: 4px;padding-bottom: 4px">
+                <div class="panel-title" align="center" style="font-weight: bold">
+                  已有状态
+                </div>
+              </div>
+              <div class="panel-body" style="padding: 5px;overflow-y: scroll;height: 150px !important">
+                <table class="table index-show table-hover">
+                  <tbody>
+                  <% @status.each do |r| %>
+                          <tr class="bg-warning">
+                            <td style="width: 40%">
+                              <%=  r.status %>
+                            </td>
+                            <td style="width: 40%;font-size: 12px !important;">
+                              <%= r.created_at%>
+                            </td>
+                            <td style="vertical-align: middle;font-size:12px !important;text-align: center; width: 20%;text-decoration: underline" class="article-modify">
+                              <%= link_to '删除', projects_add_status_path+'?del_status_id='+r.id.to_s %>
+                            </td>
+                          </tr>
+                  <%end%>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <%end%>
+            <%= form_for :status_add, url: projects_add_status_handle_path do |f| %>
+            <div class="panel panel-primary project-panel" style="margin-top: 15px">
+              <div class="panel-heading" style="font-size: inherit !important;padding-top: 4px;padding-bottom: 4px">
+                <div class="panel-title" align="center" style="font-weight: bold">
+                  添加状态
+                </div>
+              </div>
+              <div class="panel-body" style="padding: 5px;">
+                <%= f.text_area :status, rows: '4', class:'form-control'%>
+              </div>
+              <div class="form-group" style="margin-bottom: 8px">
+                <div class="col-sm-12" align="right" style="padding-right: 0">
+                  <%= f.submit('保存状态', class:'btn btn-success btn-sm')%>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render 'welcome/footer' %>

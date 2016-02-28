@@ -1,0 +1,2 @@
+module GroupFilesHelper
+end

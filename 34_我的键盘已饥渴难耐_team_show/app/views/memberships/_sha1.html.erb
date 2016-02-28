@@ -1,0 +1,28 @@
+<script type="text/ecmascript" src="sha1.js"></script>
+<script type="text/javascript">
+
+    var form1 = document.getElementById("submit_btn")
+    form1.onclick = function(){
+        var user  = document.getElementById('user').value;
+        var pass1 = document.getElementById('pass1').value;
+        var pass2 = document.getElementById('pass2').value;
+//        alert(pass1);
+//        alert(pass2);
+
+        if (user.length == 0){
+            alert("please input user.");
+            return false;
+        }
+        if (pass1 != pass2){
+            alert("password not the same.");
+            return false;
+        }
+
+        var pass = hex_sha1(pass1);
+        document.getElementById('pass1').value = pass;
+        document.getElementById('pass2').value = pass;
+//        var pass1 = document.getElementById('pass1').value;
+//        alert(pass1);
+    }
+
+</script>

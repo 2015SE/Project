@@ -1,0 +1,23 @@
+<body class="login">
+<%= render 'check_admin'%>
+<div class="container">
+  <div class="row login-div">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading" style="color: red; text-indent: 15px;font-size: larger;font-weight: bold">
+          <img style="width: auto" alt="login" src="/assets/Fonts/glyphicons-79-warning-sign.png">  错误
+        </div>
+            <div class="panel-body" style="vertical-align: middle">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label class="col-sm-12 control-label" style="font-weight: bold;text-align: center">对不起，登陆失败！</label>
+                </div>
+              </form>
+            </div>
+        <div class="panel-footer" style="padding-right: 15px;text-align: center">
+          <a href="/memberships/signup">注册</a>, <a href="/memberships/login">返回登陆</a> Or <a href="/">返回主页</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

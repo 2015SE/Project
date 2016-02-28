@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SmileNut</title>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% flash.each do |message_type, message| %> 
+  <div class="alert alert-<%= message_type %>"><%= message %></div> 
+<% end %>
+<%= yield %>
+
+</body>
+</html>

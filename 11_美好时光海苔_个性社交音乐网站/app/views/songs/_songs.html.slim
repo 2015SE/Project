@@ -1,0 +1,19 @@
+- cache [:songs, @songs] do
+  - if index
+    - if logged_in?
+      - class_name = "modal-en" unless I18n.locale.to_s == "zh-CN"
+      .ui.modal.song-form
+        i.close.red.icon
+        .content
+          = render 'songs/form', song: current_user.songs.new
+
+  - if @recommend
+    .ui.orange.message
+      .ui.center.aligned.basic.segment =t('.recommend_songs')
+  #songs data-image="#{asset_path("loading.gif")}"
+    - for song in @songs
+      = render 'song', song: song, index: index
+    #pagination data-loaded="#{t('.loaded')}"
+      = paginate @songs
+          
+  audio id="player" data-xiami_id="-1"

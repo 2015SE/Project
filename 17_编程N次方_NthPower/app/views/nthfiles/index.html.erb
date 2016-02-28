@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Nthfiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rename</th>
+      <th>Filesize</th>
+      <th>Count</th>
+      <th>Resize</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nthfiles.each do |nthfile| %>
+      <tr>
+        <td><%= nthfile.rename %></td>
+        <td><%= nthfile.filesize %></td>
+        <td><%= nthfile.count %></td>
+        <td><%= nthfile.resize %></td>
+        <td><%= link_to 'Show', nthfile %></td>
+        <td><%= link_to 'Edit', edit_nthfile_path(nthfile) %></td>
+        <td><%= link_to 'Destroy', nthfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Nthfile', new_nthfile_path %>

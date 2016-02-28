@@ -1,0 +1,79 @@
+<body class="login">
+<%= render 'check_admin'%>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h1>欢迎登陆</h1>
+    </div>
+  </div>
+  <div class="row login-div">
+    <div class="col-md-5 col-md-offset-6">
+      <div class="panel panel-default">
+        <div class="panel-heading" style="text-indent: 15px;font-size: larger;font-weight: bold">
+          <img style="width: auto" alt="login" src="/assets/Fonts/glyphicons-204-lock.png">   登陆
+        </div>
+        <%= form_for :membership_login, url: :memberships do |f| %>
+        <div class="panel-body" style="vertical-align: middle">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label class="col-sm-3 control-label">用户名</label>
+              <div class="col-sm-9">
+                <%= f.text_field(:user, class: 'form-control')%>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">密码</label>
+              <div class="col-sm-9">
+                <%= f.password_field(:password,class: 'form-control',:id=>'pass') %>
+              </div>
+            </div>
+            <!--<div class="form-group">-->
+              <!--<div class="col-sm-offset-3 col-sm-9">-->
+                <!--<div class="checkbox">-->
+                  <!--<label>-->
+                    <!--<input type="checkbox"/>-->
+                    <!--Remember me-->
+                  <!--</label>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <div class="form-group">
+              <label class="col-sm-4 control-label" style="margin-bottom: -50px;margin-top: 10px">用户类型</label>
+              <div class="col-sm-9" style="margin-left: 25%">
+                <select style="height: 34px;width: 100%" name="sel" id= "sel">
+                  <option value="admin">管理员</option>
+                  <option value="project_member">项目成员</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group last">
+              <div class="col-sm-offset-0 col-sm-12" align="center" style="margin-top: 10%">
+                <%= f.submit('登陆', class:'btn btn-success btn-sm', :id=>'submit_btn') %>
+                <button type="reset" class="btn btn-default btn-sm">
+                  清空</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <% end %>
+        <div class="panel-footer">
+          没有注册？<a href="signup">点击注册</a>或者<a href="/">返回主页</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+<script type="text/ecmascript" src="sha1.js"></script>
+<script type="text/javascript">
+
+    var form1 = document.getElementById("submit_btn")
+    form1.onclick = function(){
+        var pass = document.getElementById('pass').value;
+
+        var pass_hex = hex_sha1(pass);
+        document.getElementById('pass').value = pass_hex;
+
+    }
+
+</script>

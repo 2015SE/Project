@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>商店名称:</strong>
+  <%= @shop.name %>
+</p>
+
+<p>
+  <strong>电话:</strong>
+  <%= @shop.tel %>
+</p>
+
+<p>
+  <strong>地址:</strong>
+  <%= @shop.address %>
+</p>
+
+<p>
+  <strong>分类:</strong>
+  <%= @shop.category %>
+</p>
+
+<p>
+  <strong>描述:</strong>
+  <%= @shop.description %>
+</p>
+
+<%= link_to '编辑', edit_shop_path(@shop) %> |
+<%= link_to '返回', shops_path %>

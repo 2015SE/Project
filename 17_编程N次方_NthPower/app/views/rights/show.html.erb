@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @right.group_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @right.user_id %>
+</p>
+
+<p>
+  <strong>File:</strong>
+  <%= @right.file_id %>
+</p>
+
+<p>
+  <strong>Right w:</strong>
+  <%= @right.right_w %>
+</p>
+
+<p>
+  <strong>Right r:</strong>
+  <%= @right.right_r %>
+</p>
+
+<p>
+  <strong>Right wr:</strong>
+  <%= @right.right_wr %>
+</p>
+
+<%= link_to 'Edit', edit_right_path(@right) %> |
+<%= link_to 'Back', rights_path %>

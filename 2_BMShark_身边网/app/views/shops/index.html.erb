@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>商店列表</h1>
+<h2>商店总数：<%= @shops.count %>
+</h2>
+<table>
+  <thead>
+    <tr>
+      <th>商店名称</th>
+      <th>电话</th>
+      <th>地址</th>
+      <th>类别</th>
+      <th>描述</th>
+	  <th>相关操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shops.each do |shop| %>
+      <tr>
+        <td><%= shop.name %></td>
+        <td><%= shop.tel %></td>
+        <td><%= shop.address %></td>
+        <td><%= shop.category %></td>
+        <td><%= shop.description %></td>
+        <td><%= link_to '详细', shop %>
+        <%= link_to '编辑', edit_shop_path(shop) %>
+        <%= link_to '删除', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新商店', new_shop_path %>

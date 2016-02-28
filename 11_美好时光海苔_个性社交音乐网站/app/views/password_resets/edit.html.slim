@@ -1,0 +1,15 @@
+.ui.grid
+  .six.wide.column
+  .four.wide.column
+    h2.header.center =t('.modify_password')
+    .ui.form
+      #password-edit-errors
+        = render 'shared/error_messages', object: @user
+      = form_for @user, :url => password_reset_path(@token), :html => {:method => :put} do |f|
+        .field
+          = f.text_field :email, placeholder: "#{t('activerecord.attributes.user.name')}", disabled: "disabled"
+        .field
+          = f.password_field :password, placeholder: "#{t('activerecord.attributes.user.password')}"
+        .field
+          = f.password_field :password_confirmation, placeholder: "#{t('activerecord.attributes.user.password_confirmation')}"
+        = f.submit "#{t('form.save')}", class: "ui blue fluid button"

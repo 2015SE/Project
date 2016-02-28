@@ -1,0 +1,23 @@
+<%= render "./nuts/header" %>
+<% provide(:title, 'Sign up') %> 
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<h1 align="center">Sign up</h1> 
+
+<div class="row"> 
+    <div class="col-md-6 col-md-offset-3"> 
+    <%= form_for(@user) do |f| %> 
+        <%= render 'shared/error_messages' %>
+
+        <%= f.label :Name %> 
+        <%= f.text_field :Name %>
+        <%= f.label :Email %> 
+        <%= f.email_field :Email %>
+        <%= f.label :password %> 
+        <%= f.password_field :password %>
+        <%= f.label :password_confirmation, "Confirmation" %> 
+        <%= f.password_field :password_confirmation %>
+        <%= f.submit "Create my account", class: "btn btn-primary" %> 
+    <% end %> 
+    </div> 
+</div>

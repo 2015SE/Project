@@ -1,0 +1,31 @@
+<%= render '/welcome/nav'%>
+
+<div class="container" style="min-height: 390px">
+  <ol class="breadcrumb">
+    <li><a href="/">主页</a></li>
+    <li><a href="/articles">相关报道列表</a></li>
+    <li class="active"><%= @article[:title]%></li>
+  </ol>
+  <div align="center">
+    <h1>
+      <%= @article[:title]%>
+    </h1>
+  </div>
+  <div align="right">
+    <label class="show-date">
+      创建日期:<%= %><br>浏览量:
+    </label>
+  </div>
+  <div>
+    <p>
+      <%= @article[:content]%>
+    </p>
+    <% if @image_path%>
+        <p>
+          <%= image_tag(@image_path)%>
+        </p>
+    <% end%>
+  </div>
+</div>
+
+<%= render 'welcome/footer' %>

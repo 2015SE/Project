@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  password: MyString
+  disksize: 1
+  usesize: 1
+
+two:
+  username: MyString
+  password: MyString
+  disksize: 1
+  usesize: 1

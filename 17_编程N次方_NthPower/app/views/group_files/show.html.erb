@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @group_file.group_id %>
+</p>
+
+<p>
+  <strong>File:</strong>
+  <%= @group_file.file_id %>
+</p>
+
+<p>
+  <strong>Filename:</strong>
+  <%= @group_file.filename %>
+</p>
+
+<p>
+  <strong>Resize:</strong>
+  <%= @group_file.resize %>
+</p>
+
+<%= link_to 'Edit', edit_group_file_path(@group_file) %> |
+<%= link_to 'Back', group_files_path %>

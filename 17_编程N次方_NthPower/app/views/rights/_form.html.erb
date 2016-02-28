@@ -1,0 +1,41 @@
+<%= form_for(@right) do |f| %>
+  <% if @right.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@right.errors.count, "error") %> prohibited this right from being saved:</h2>
+
+      <ul>
+      <% @right.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :group_id %><br>
+    <%= f.number_field :group_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :file_id %><br>
+    <%= f.number_field :file_id %>
+  </div>
+  <div class="field">
+    <%= f.label :right_w %><br>
+    <%= f.text_field :right_w %>
+  </div>
+  <div class="field">
+    <%= f.label :right_r %><br>
+    <%= f.text_field :right_r %>
+  </div>
+  <div class="field">
+    <%= f.label :right_wr %><br>
+    <%= f.text_field :right_wr %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

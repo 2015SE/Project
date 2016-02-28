@@ -1,0 +1,21 @@
+<center>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>群名称:</strong>
+  <%= @group.groupname %>
+</p>
+
+<p>
+  <strong>创建者:</strong>
+  <%= @group.user_id %>
+</p>
+
+<p>
+  <strong>群网盘容量:</strong>
+  <%= @group.disksize %>MB
+</p>
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>
+</center>

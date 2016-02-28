@@ -1,0 +1,85 @@
+source 'https://rubygems.org'
+
+# rails框架
+gem 'rails', '4.2'
+
+# UglifyJS JavaScript包装器
+gem 'uglifier', '>= 1.3.0'
+
+# 构架于JavaScript之上的预处理器语言，可以静态编译成JavaScript
+gem 'coffee-rails', '~> 4.0.1'
+
+# Sass 是对 CSS 的扩展
+gem 'sass-rails', '~> 4.0.5'
+gem 'compass-rails'
+
+# 使用javascript框架jquery
+gem 'jquery-rails'
+
+# 使用Turbolinks优化客户端的页面加载性能
+gem 'turbolinks'
+
+# 使用jbuilder方便json的处理
+gem 'jbuilder', '~> 2.0'
+
+# 使用sdoc为ruby代码生成可查询的html文档
+gem 'sdoc', '~> 0.4.0', group: :doc
+
+# Font-awesome为Bootstrap而创造的图标字体
+gem "font-awesome-rails"
+
+  # 使用carrierwave、mini_magick和remotipart处理用户头像上传
+  gem 'carrierwave'
+  gem 'mini_magick'
+  gem 'remotipart'
+
+  # 使用kaminari生成分页
+  gem 'kaminari'
+
+  # 使用nokogiri处理xml数据
+ gem 'nokogiri'
+
+ # 处理登陆认证
+ gem 'sorcery', '0.9.0'
+
+ # 使用Slim作rails的模版库
+ gem 'slim'
+
+ # 使用dalli作为Memcached的客户端
+ gem 'dalli'
+
+ gem 'rails-i18n'
+
+ # 生产环境
+group :production do
+  gem 'pg', '0.18.4'
+  gem 'rails_12factor', '0.0.2'
+end
+
+# 开发环境、测试环境
+group :development, :test do
+  # 使用byebug来暂停程序运行进行测试
+  gem 'byebug'
+  # 在异常页是使用irb进行调试
+  gem 'web-console', '~> 2.0.0.beta4'
+  # 使用spring让程序在后台执行，加速开发
+  gem 'spring'
+end
+
+
+group :development do
+  gem 'sqlite3'
+  gem "better_errors"
+  gem 'binding_of_caller'
+  gem 'meta_request'
+  gem 'traceroute'
+end
+
+group :test do
+  gem 'minitest-reporters', '1.0.5'
+  gem 'guard-minitest',     '2.3.1'
+end
+
+# 使用bcrypt来加密用户密码
+gem 'bcrypt', require: false
+

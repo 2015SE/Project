@@ -1,0 +1,11 @@
+- if songs.any?
+  - for song in songs
+    .songs-list
+      a data-xiami_id="#{song.s_id}" class="ui playBtn"
+        i.play.icon
+      = link_to song.title.html_safe, song
+      .ui.hidden.divider
+- else
+  .ui.center.aligned.basic.segment
+    p =t('.no_songs_yet')
+    p ...>_<...

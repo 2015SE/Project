@@ -1,0 +1,77 @@
+
+
+<body class="signup">
+<div class="container" style="height: 100%">
+
+  <div class="row signup-div" style="margin-top: 50px !important;">
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 align="center" style="margin: auto;font-weight: bolder">注&nbsp&nbsp&nbsp&nbsp&nbsp册</h1>
+        </div>
+          <%= form_for :signup, url: :memberships_signup_handle do |f| %>
+            <div class="panel-body" style="vertical-align: middle;padding-left: 10%;padding-right: 10%">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">用户名</label>
+                  <div class="col-sm-9">
+                    <%= f.text_field(:user, class: 'form-control', :id=>'user')%>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">密码</label>
+                  <div class="col-sm-9">
+                    <%= f.password_field(:password ,class: 'form-control', :id=>'pass1') %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">重复密码</label>
+                  <div class="col-sm-9">
+                    <%= f.password_field(:confirm,class: 'form-control', :id=>'pass2') %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">手机号</label>
+                  <div class="col-sm-9">
+                    <%= f.text_field(:phone,class: 'form-control') %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">QQ</label>
+                  <div class="col-sm-9">
+                    <%= f.text_field(:qq,class: 'form-control') %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">项目组长？</label>
+                  <div class="col-sm-9">
+                    <%= f.text_field(:is_leader,class: 'form-control') %>
+                  </div>
+                </div>
+                <div class="form-group last">
+                  <div class="col-sm-offset-0 col-sm-12" align="center" style="margin-top: 10%">
+                    <%= f.submit('注册', class:'btn btn-success btn-sm', :id=>"submit_btn")
+                    %>
+                    <button type="reset" class="btn btn-default btn-sm">重填</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <% if session[:err] == 1%>
+                <div class="alert alert-warning warn">
+                  <a href="#" class="close" data-dismiss="alert">
+                    &times;
+                  </a>
+                  <div align="center"><strong>错误！</strong>两次填写的密码不一致！</div>
+                </div>
+            <% end%>
+          <% end %>
+        <div class="panel-footer">
+          不想注册？<a href="/">返回主页</a>。或已经注册<a href="login">点击登陆</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<%= render 'sha1'%>

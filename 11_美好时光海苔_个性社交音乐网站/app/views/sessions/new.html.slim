@@ -1,0 +1,19 @@
+.login-form
+  = form_for :session, url: sessions_path, remote: true do |f|
+    .ui.form.basic.segment
+      #login-errors
+      .field
+        = f.text_field :email, placeholder: "#{t('activerecord.attributes.user.email')}"
+      .field
+        = f.password_field :password, placeholder: "#{t('activerecord.attributes.user.password')}"
+      .field
+        .ui.toggle.checkbox
+          = f.check_box :remember
+          = f.label :remember, "#{t('.remember_me')}"
+      = f.submit "#{t('users.login')}", class: "ui green fluid button"
+
+.errors-info data-error="#{t('.invalid_email_password_combination')}" data-inactivation="#{t('.inactivation')}"
+.small.ui.modal.reset-pwd-form
+  i.close.red.icon
+  .content
+    = render 'password_resets/form'      

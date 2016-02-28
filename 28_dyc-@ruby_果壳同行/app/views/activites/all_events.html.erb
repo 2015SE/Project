@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>果壳活动</title>
+		<link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<link href="/assets/activities/all_events.scss" rel="stylesheet" type="text/css"/>
+		<script type="text/javascript" src="/assets/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/assets/header.js"></script>
+		<script type="text/javascript" src="/assets/activities/all-events.js"></script>
+
+	</head>
+	<body>
+		<%= render "./nuts/header" %>
+		
+		
+		<div id="carousel-example-generic" class="carousel slide container" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			</ol>
+			
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner poster-wrap" role="listbox">
+				<div class="item active">
+					<% if (@hot_activities[0].picture_path) %>
+						<% path = Rails.public_path.join('/uploadImage',@hot_activities[0].picture_path)%>
+						<img src= <%= path %> alt="..." class="poster">
+					<% else %>
+						<img src="/assets/poster2.gif" alt="..." class="poster">
+					<% end %>
+					<div class="carousel-caption up_caption">
+					  	<%= link_to @hot_activities[0].name , activite_path(@hot_activities[0].id) %>
+					</div>
+				</div>
+				<div class="item">
+					<% if (@hot_activities[1].picture_path) %>
+						<% path = Rails.public_path.join('/uploadImage',@hot_activities[1].picture_path)%>
+						<img src= <%= path %> alt="..." class="poster">
+					<% else %>
+						<img src="/assets/poster1.jpg" alt="..." class="poster">
+					<% end %>
+					<div class="carousel-caption up_caption" >
+					  	<%= link_to @hot_activities[1].name , activite_path(@hot_activities[1].id) %>
+					</div>
+				</div>
+				<div class="item">
+					<% if (@hot_activities[2].picture_path) %>
+						<% path = Rails.public_path.join('/uploadImage',@hot_activities[2].picture_path)%>
+						<img src= <%= path %> alt="..." class="poster">
+					<% else %>
+						<img src="/assets/poster1.jpg" alt="..." class="poster">
+					<% end %>
+					<div class="carousel-caption up_caption">
+					  	<%= link_to @hot_activities[2].name , activite_path(@hot_activities[2].id) %>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Controls -->
+			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+		
+		
+		
+		
+		
+		
+		<div id="tags" class="container white-background">
+				<ul class="list-inline col-sm-6 col-sm-offset-3">
+					<li> <%= link_to "全部" , {:controller => "activites" , :action => "all_events"}, class:"label label-default" %> </li>	
+					<li> <%= link_to "旅行" , {:controller => "activites" , :action => "all_events" , tag: "旅行"},class:"label label-primary" %>
+						(<% if @sum_ac_travel  %>
+							<%= @sum_ac_travel %>
+						<% end %>)</li>
+					<li> <%= link_to "讲座" , {:controller => "activites" , :action => "all_events" , tag: "讲座"},class:"label label-info" %>
+						(<% if @sum_ac_lecture  %>
+							<%= @sum_ac_lecture %>
+						<% end %>)</li>
+					<li> <%= link_to "电影" , {:controller => "activites" , :action => "all_events" , tag: "电影"},class:"label label-info" %>
+						(<% if @sum_ac_movie  %>
+							<%= @sum_ac_movie %>
+						<% end %>)</li>
+				</ul>
+				<%=link_to "发起活动" ,"/launch", class:"btn"%>
+		</div>
+			
+		<div id="activity_info" class="container white-background">
+			<div class="row activity_cards">
+				<%= render partial: "activities_partial",:object =>@activities %>
+			</div>
+			<a name="anchor"></a>
+			<nav id="page-division" class="center-in-line">
+				<ul class="pagination pagination-lg">
+					<li id="previous">
+					  <a href="#anchor" aria-label="Previous">&laquo;
+					  </a>
+					</li>
+					<li><a href="javascript:void(0)" class="page">1</a></li>
+					<li><a href="javascript:void(0)" class="page">2</a></li>
+					<li><a href="javascript:void(0)" class="page">3</a></li>
+					<li><a href="javascript:void(0)" class="page">4</a></li>
+					<li><a href="javascript:void(0)" class="page">5</a></li>
+					<li id="next">
+					  <a href="#anchor" aria-label="Next">
+					    <span aria-hidden="true">&raquo;</span>
+					  </a>
+					</li>
+				</ul>
+		</nav>
+			
+		</div>
+
+		<%=link_to "发起活动" ,"/launch", class:"btn btn-info"%>
+
+	</body>
+</html>
+
+

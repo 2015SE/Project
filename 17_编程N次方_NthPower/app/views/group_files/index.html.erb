@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Group Files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>File</th>
+      <th>Filename</th>
+      <th>Resize</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @group_files.each do |group_file| %>
+      <tr>
+        <td><%= group_file.group_id %></td>
+        <td><%= group_file.file_id %></td>
+        <td><%= group_file.filename %></td>
+        <td><%= group_file.resize %></td>
+        <td><%= link_to 'Show', group_file %></td>
+        <td><%= link_to 'Edit', edit_group_file_path(group_file) %></td>
+        <td><%= link_to 'Destroy', group_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Group file', new_group_file_path %>

@@ -1,0 +1,37 @@
+<% if !flash[:notice].blank? %>
+   <div class = "alert alert-info">
+      <%= flash[:notice] %>
+   </div>
+<% end %>
+
+      <div class = "container" style = "padding-top:20px;">
+         <%= yield %>
+      </div>
+<br />
+
+<%= link_to "上传文件", new_resume_path, class: "btn btn-primary" %>
+<br />
+<br />
+
+<table class = "table table-bordered table-striped">
+   <thead>.
+      <tr>
+         <th>文件名</th>
+         <th>下载</th>
+         <th>删除</th>
+      </tr>
+   </thead>
+   
+   <tbody>
+      <% @resumes.each do |resume| %>
+         
+         <tr>
+            <td><%= resume.name %></td>
+            <td><%= link_to "下载", resume.attachment_url %></td>
+            <td><%= button_to "删除",  resume, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{resume.name}?" %></td>
+         </tr>
+         
+      <% end %>
+   </tbody>
+   
+</table>

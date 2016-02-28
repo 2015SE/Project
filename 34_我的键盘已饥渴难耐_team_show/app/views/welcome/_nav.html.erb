@@ -1,0 +1,56 @@
+
+<div class="page-header" align="center" >
+  <div style="padding-top: 5px; padding-right: 5px;font-size: 12px;vertical-align: middle;font-weight: bold;color: white !important;" align="right">
+    <% if session[:ut]==nil%>
+        <a href="../memberships/login" class="btn btn-primary btn-xs" role="button">登&nbsp&nbsp&nbsp&nbsp&nbsp陆</a>
+        <a href="../memberships/signup" class="btn btn-primary btn-xs" role="button">注&nbsp&nbsp&nbsp&nbsp&nbsp册</a>
+    <% else if session[:ut]=="admin" %>
+        欢迎您, <%= session[:un] %>
+        <div class="btn-group btn-xs" style="width: 10% !important;">
+          <button type="button" class="btn btn-primary" style="width: 80% !important;padding: 1px 5px 1px 10px !important;font-size: 12px !important;">
+            操&nbsp&nbsp&nbsp&nbsp&nbsp作
+          </button>
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="font-size: 12px !important;padding: 1px 5px !important;width: 20% !important;" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="../articles/new">发布</a>
+              <ul class="dropdown-menu">
+                <li><a href="../projects/new">项目</a></li>
+                <li><a href="../articles/new">相关报道</a></li>
+                <li><a href="../notices/new">通知</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="../articles/modify">修改</a>
+              <ul class="dropdown-menu">
+                <li><a href="../projects/modify">项目</a></li>
+                <li><a href="../articles/modify">相关报道</a></li>
+                <li><a href="../notices/modify">通知</a></li>
+                <li><a href="../memberships/modify">成员</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <button onclick="window.location.href='/?operation=log_out'" class="btn btn-primary btn-xs" style="margin-left: 10px">登&nbsp&nbsp&nbsp&nbsp&nbsp出</button>
+    <% else%>
+        欢迎您, <%= session[:un] %>
+        <a href="../projects/my_projects" style="color: white;margin-left: 10px">我的项目</a>
+        <button onclick="window.location.href='/?operation=log_out'" class="btn btn-primary btn-xs" style="margin-left: 10px">登&nbsp&nbsp&nbsp&nbsp&nbsp出</button>
+    <%end%>
+    <% end%>
+  </div>
+</div>
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav nav-pills nav-justified">
+        <li><a href="/"><img alt="Brand" src="/assets/home_icon.png" height="20" width="20">主页</a></li>
+        <li><a href="/projects">项目</a></li>
+        <li><a href="/articles">相关报道</a></li>
+        <li><a href="/notices">通知</a></li>
+        <li><a href="/welcome/about_us">关于我们</a></li>
+      </ul>
+    </div>
+</nav>

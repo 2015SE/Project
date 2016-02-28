@@ -1,0 +1,33 @@
+<script type="text/javascript">
+var $text=document.URL.match(/\b[a-zA-Z]*=[^&]*/g);
+var $menber_id=parseInt($text.toString().replace(/=/g,''));
+</script>
+<center>
+<p id="notice"><%= notice %></p>
+
+<h1 style="text-align:center">群列表</h1>
+
+<table border="2px" bordercolor="#5E4686" cellspacing="1px" style="border-collapse:collapse">
+  <thead>
+    <tr>
+      <th style="width:80px;text-align:center">群名称</th>
+      <th style="width:80px;text-align:center">群主</th>
+      <th style="width:80px;text-align:center">网盘大小</th>
+      <th style="width:80px;text-align:center">加入群</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td style="width:80px;text-align:center"><%= group.groupname %></td>
+        <td style="width:80px;text-align:center"><%= group.user_id %></td>
+        <td style="width:80px;text-align:center"><%= group.disksize %></td>
+        <td style="width:80px;text-align:center"><%= link_to '加入群', group ,$member_id%></td>
+      </tr>
+    <% end %>
+  </tbody>
+  
+</table>
+<br>
+</center>

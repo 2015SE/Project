@@ -1,0 +1,8 @@
+$(function(){
+    $('#notification-<%= @notification.id %>').addClass('animated lightSpeedOut')
+                               .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', 
+        function(){
+        $(this).remove();
+        }
+    );
+});

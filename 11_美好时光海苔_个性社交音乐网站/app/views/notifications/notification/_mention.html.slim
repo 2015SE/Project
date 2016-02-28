@@ -1,0 +1,15 @@
+- comment = notification.subject
+- user = comment.user
+- song = comment.song
+- author = song_path(song) + "#comment-#{comment.id}"
+
+- cache notification do
+  .label
+    = image_tag user.avatar_url(:small), class: "ui avatar image"
+  .content
+    .summary
+      = link_to user.name, user, class: "ui label red"
+      |  #{t('.mention_you_at')} 
+      = link_to song.title, author
+    .extra.text
+      = parse_text(comment.content)

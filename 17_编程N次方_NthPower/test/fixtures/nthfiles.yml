@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rename: MyString
+  filesize: 1
+  count: 1
+  resize: 1
+
+two:
+  rename: MyString
+  filesize: 1
+  count: 1
+  resize: 1

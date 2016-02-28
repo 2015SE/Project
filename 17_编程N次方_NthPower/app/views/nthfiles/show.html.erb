@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rename:</strong>
+  <%= @nthfile.rename %>
+</p>
+
+<p>
+  <strong>Filesize:</strong>
+  <%= @nthfile.filesize %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @nthfile.count %>
+</p>
+
+<p>
+  <strong>Resize:</strong>
+  <%= @nthfile.resize %>
+</p>
+
+<%= link_to 'Edit', edit_nthfile_path(@nthfile) %> |
+<%= link_to 'Back', nthfiles_path %>

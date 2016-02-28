@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>商店:</strong>
+  <%= @product.shop_id %>
+</p>
+
+<p>
+  <strong>名称:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>价格:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>数量:</strong>
+  <%= @product.quantity %>
+</p>
+
+<p>
+  <strong>描述:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>类别:</strong>
+  <%= @product.category %>
+</p>
+
+<p>
+  <strong>图片地址:</strong>
+  <%= @product.image_url %>
+</p>
+
+<p>
+  <strong>有效时间:</strong>
+  <%= @product.date_available %>
+</p>
+
+<%= link_to '编辑', edit_product_path(@product) %> |
+<%= link_to '返回', products_path %>

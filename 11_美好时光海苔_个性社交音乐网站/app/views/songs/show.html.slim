@@ -1,0 +1,70 @@
+- id = @song.s_id
+- user = @song.user
+- cache @song do
+  .ui.grid
+    .four.wide.column
+    .eight.wide.column
+      .ui.one.column.grid.songs-list id="song-#{@song.id}"
+        .sixteen.wide.column.song-info
+
+          .song-container.ui.grid
+            .ui.five.wide.column
+              .album-pic
+                .outer-pic.ui.circular.image.dimmer-image
+                  .ui.dimmer
+                    .content
+                      .center
+                        a.playBtn data-xiami_id="#{@song.s_id}"
+                          i.ui.red.huge.play.icon
+                  img src="#{@song.pic}"
+
+            .ui.eleven.wide.column
+              .song-panel
+                h3.header
+                  i.orange.sound.icon
+                  = link_to @song.title.html_safe, @song
+                p
+                  i.user.green.icon
+                  a = @song.artist
+                p.song-toolbar
+                  = link_to user
+                    = image_tag(@song.user.avatar_url(:small), class: "ui mini-avatar avatar image run-popup", data: { content: "#{user.name}", position: "bottom center" } )
+                  span.song-tools-divider •
+        
+                  i.teal.calendar.icon
+                  = @song.created_at.strftime("%F")
+                  span.song-tools-divider •
+
+                  span.item id="like-song-#{@song.id}"
+                    - @likeable = Likeship.likeable(@song)
+                    = likeable_likes_tag @likeable                  
+
+            .ui.sixteen.wide.column
+              .song-content 
+                = parse_text(@song.content)
+          .song-footer
+
+      .ui.horizontal.icon.divider
+        i.circular.red.chat.icon
+
+      #comments
+        .column
+          .ui.comments
+            - if @comments.any?
+              = render @comments
+            - else
+              .ui.center.aligned.basic.segment =t('comments.no_comments_yet')
+
+          = paginate @comments
+
+          .ui.horizontal.icon.divider
+            i.circular.green.pencil.icon
+          - if logged_in?
+            = render 'comments/form'
+          - else
+            .ui.center.aligned.basic.segment
+              = link_to :login
+                .ui.animated.fade.blue.button
+                  .visible.content =t('users.login_first')
+                  .hidden.content =t('users.login')
+  audio id="player" data-xiami_id="-1"

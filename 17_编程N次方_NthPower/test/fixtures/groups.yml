@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  groupname: MyString
+  user_id: 1
+  disksize: 1
+
+two:
+  groupname: MyString
+  user_id: 1
+  disksize: 1

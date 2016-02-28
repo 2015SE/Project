@@ -1,0 +1,96 @@
+<%= render '/welcome/nav'%>
+
+<div class="container" style="min-height: 390px">
+  <h2 align="center">编辑</h2>
+  <div class="toMiddle" style="height: 4px;margin-bottom: 10px;margin-top: -5px"></div>
+  <div style="width: 95%;float: right;margin-right: 2.5%">
+    <ul class="nav nav-tabs nav-justified">
+      <li role="presentation" class="active"><a href="">项目</a></li>
+      <li role="presentation"><a href="../articles/modify">文章</a></li>
+      <li role="presentation"><a href="../notices/modify">通知</a></li>
+    </ul>
+    <div style="width:100%; border: solid #ddd 1px;border-top: none;height: 500px">
+      <%= form_for :projects_edt, url: :projects_edt_handle do |f| %>
+          <div class="panel-body">
+            <form class="form-horizontal" role="form">
+              <div style="float: left;width: 75%">
+                <div class="form-group" >
+                  <label class="col-sm-2 control-label">标题</label>
+                  <div class="col-sm-10">
+                    <%= f.text_field  :title, :value => @project.name, class: 'form-control' %>
+                  </div>
+                </div>
+                <div class="form-group" style="clear: both">
+                  <label class="col-sm-2 control-label text-top">项目详情</label>
+                  <div class="col-sm-10" style="margin-top: 10px">
+                    <%= f.text_area  :description, :value => @project.description , rows:15, class: 'form-control'%>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-12" align="right" style="margin-top: 3%;padding-left: 20%">
+                    <%= f.submit('保存修改', class:'btn btn-success btn-sm') %>
+                  </div>
+                </div>
+              </div>
+              <div style="float: left;width: 25%;padding-left: 2.5%;padding-right: 2.5%">
+                <div class="panel panel-primary project-panel">
+                  <div class="panel-heading" style="font-size: inherit !important;padding-top: 4px;padding-bottom: 4px">
+                    <div class="panel-title" align="center" style="font-weight: bold">
+                      项目状态
+                    </div>
+                  </div>
+                  <div class="panel-body" style="padding: 5px;overflow-y: scroll;height: 125px !important">
+                    <table class="table index-show table-hover">
+                      <tbody>
+                      <% @status.each do |r| %>
+                          <tr class="bg-warning" align="center">
+                            <td>
+                              <%=  r.status %>
+                            </td>
+                          </tr>
+                      <%end%>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-12" align="right" style="margin-top: -5%;padding-right: 0">
+                    <%= link_to '添加状态', projects_add_status_path+'?'+'add='+@project.id.to_s,class: 'btn btn-success btn-sm',style: 'width: auto !important;'%>
+                  </div>
+                </div>
+                <div class="panel panel-primary project-panel" style="margin-top: 15px">
+                  <div class="panel-heading" style="font-size: inherit !important;padding-top: 4px;padding-bottom: 4px">
+                    <div class="panel-title" align="center" style="font-weight: bold">
+                      项目成员
+                    </div>
+                  </div>
+                  <div class="panel-body" style="padding: 5px;overflow-y: scroll;height: 125px !important">
+                    <table class="table index-show table-hover">
+                      <tbody>
+                      <% @members_all.each do |m| %>
+                          <% if @map[m.id] == 'yes' %>
+                              <tr class="bg-warning">
+                                <td>
+                                  <%= m.name%>
+                                </td>
+                              </tr>
+                          <% end%>
+                      <%end%>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-12" align="right" style="margin-top: -5%;padding-right: 0">
+                    <%= link_to '添加成员', projects_add_members_path+'?project_id='+@project.id.to_s,class: 'btn btn-success btn-sm',style: 'width: auto !important;'%>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+<%= render 'welcome/footer' %>

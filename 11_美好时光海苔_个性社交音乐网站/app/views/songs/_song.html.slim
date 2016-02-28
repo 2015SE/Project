@@ -1,0 +1,30 @@
+- cache [song, index] do
+  section.ui.two.column.grid.segment.stacked.songs-list id="song-#{song.id}"
+    .five.wide.column
+      - unless index
+        .ui.left.red.corner.label
+          i.heart.icon
+      .album-pic
+        .outer-pic.ui.circular.image
+          img src="#{song.pic}"
+        a data-xiami_id="#{song.s_id}" class="ui corner label playBtn"
+          i.play.icon
+    .eleven.wide.column.song-info
+      .ui.right
+        h3.header
+          i.orange.sound.icon
+          = link_to song.title.html_safe, song
+        .singer
+          | #{t('activerecord.attributes.song.artist')}: 
+          a = song.artist
+        .song-content 
+          = parse_text(song.content)
+      .song-footer
+        .com-count
+          - author = song_url(song) + "#comments"
+          = link_to author do 
+            i.green.comment.icon
+            = song.comments.size
+        .musician
+          = image_tag(song.user.avatar_url(:thumb), class: "ui avatar image")
+          = link_to song.user.name, song.user

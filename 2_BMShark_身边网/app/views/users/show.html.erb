@@ -1,0 +1,14 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+	<aside class="span4">
+		<section>
+		<ul>
+		<h1>用户资料</h1>
+			<li> 姓名: <%= @user.name %></li>
+			<li> 电话: <%= @user.telephone %></li>
+			<li> 电子邮箱: <%= @user.email %></li>
+			<li> 地址: <%= @user.address %></li>
+		</ul>
+		</section>
+	</aside>
+</div>

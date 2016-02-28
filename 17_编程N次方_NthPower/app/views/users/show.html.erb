@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    function showInf(){
+      document.getElementById("inf").style.display="block";
+    }
+  </script>
+<head>
+</head>
+<body><center>
+  <h1>
+   欢迎 <%= @user.username %> 进入NthPower网盘
+  </h1>
+    <div><!-- id="inf" style="display:none"-->
+    <p id="notice"><%= notice %></p>
+    <!--p>
+      <strong>用户名:</strong>
+      <%= @user.username %>
+    </p>
+    
+    <p>
+      <strong>Password:</strong>
+      <%= @user.password %>
+    </p-->
+    
+    <p>
+      <strong>网盘容量:</strong>
+      <%= @user.disksize %>MB
+    </p>
+    
+    <p>
+      <strong>已使用容量:</strong>
+      <%= @user.usesize %>MB
+    </p>
+  </div>
+  <!--form><input type="submit" value="个人信息" onclick="showInf()"/></form  user_files/new-->
+  <div>
+    <p>
+      <form action="../resumes/index" method="get">
+        <input type="submit" value="个人网盘"/>
+      </form>
+    </p>
+    <p>
+      <form action="../groups" method="get">
+        <!--input type="hidden" name="user_id" value="<%= @user.id %>"/-->
+        <input type="submit" value="加入新群"/>
+      </form>
+    </p>
+    <p>
+      <form action="../groups/new" method="get">
+        <input type="submit" value="创建新群"/>
+      </form>
+    </p>
+  </div>
+
+</center></body>
+</html>

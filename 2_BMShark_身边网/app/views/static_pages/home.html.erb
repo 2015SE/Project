@@ -1,0 +1,12 @@
+<% provide(:title, 'Home') %>
+<div class="center hero-unit">
+<h1>欢迎来到身边网</h1>
+<% if signed_in? %>
+<%= link_to "商品", products_path, class: "btn btn-large btn-primary" %>
+<% else %>
+<h2>
+还未注册？现在
+</h2>
+<%= link_to "注册", new_user_path, class: "btn btn-large btn-primary" %>
+<% end %>
+</div>

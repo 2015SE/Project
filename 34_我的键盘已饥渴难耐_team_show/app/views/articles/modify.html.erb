@@ -1,0 +1,32 @@
+<%= render '/welcome/nav'%>
+
+<div class="container">
+  <h2>修改相关报道</h2>
+  <div class="toRight" style="height: 4px"></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table index-show table-hover" style="vertical-align: middle">
+        <tbody>
+        <% @i = 0 %>
+        <% @articles.each do |a| %>
+            <tr class="bg-warning">
+                <% @i = a.id %>
+                <%   params[:id] = @i %>
+              <td style="width: 80%">
+                <strong>&bull;&nbsp;</strong><%= link_to a[:title], articles_path + '/' + @i.to_s%>
+              </td>
+              <td style="text-align: center; width: 5%;text-decoration: underline" class="article-modify">
+                <%= link_to '编辑', articles_edt_path+'?'+'edt='+a.id.to_s%>
+              </td>
+              <td style="text-align: center; width: 5%;text-decoration: underline" class="article-modify">
+                <%= link_to '删除', articles_modify_path+'?'+'del='+a.id.to_s%>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%= render 'welcome/footer' %>

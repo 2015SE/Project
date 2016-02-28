@@ -1,0 +1,52 @@
+<style>
+.ListTitle {
+color: #244;
+font-weight: bold;
+font-size: larger;
+}
+.ListActions {
+font-size: x-small;
+text-align: right;
+padding-left: 1em;
+}
+.ListLine0 {
+background: #e0f8f8;
+}
+.ListLine1 {
+background: #f8b0f8;
+}
+</style>
+<h1>Product Listing</h1>
+<table cellpadding="5" cellspacing="0">
+　<%
+  odd_or_even = 0
+  for product in @products
+  odd_or_even = 1- odd_or_even
+  %>
+　　
+　　<tr valign="top" class="ListLine<%= odd_or_even %>">
+　　　<td>
+　　　　<img width="60" height="70" src="<%= product.image_url %>"/>
+　　　</td>
+　　　<td width="60%">
+　　　　<span class="ListTitle"><%= h(product.title) %></span><br />
+　　　<%= h(truncate(product.description, :length => 80)) %>
+　　　</td>
+　　　<td align="right">
+　　　　上架日期：<%= product.date_available.strftime("%y-%m-%d") %><br/>
+　　　　<strong>价格：￥<%= sprintf("%0.2f", product.price) %></strong><br/>
+		<%= sprintf("库存：%d", product.quantity) %><br/>
+　　　</td>
+　　　<td  class="ListActions">
+		
+　　　　<%= link_to '详细', :action => 'show', :id => product %><br/>
+　　　　<%= link_to '编辑', :action => 'edit', :id => product %><br/>
+		<%= link_to '删除', { :action => 'destroy', :id => product },
+		:confirm => "确实要删除么?" %><br/>
+　　　</td>
+　　</tr>
+　<% end %>
+</table>
+
+<br />
+<%= link_to '新商品', new_product_path %>

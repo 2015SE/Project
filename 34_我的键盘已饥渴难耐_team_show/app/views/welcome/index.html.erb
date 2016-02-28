@@ -1,0 +1,108 @@
+<%= render '/welcome/nav' %>
+
+<div class="container" style="min-height: 100%">
+  <div class="row">
+    <div class="row">
+      <div class="row">
+        <div class="col-xs-7">
+          <table class="table">
+            <tr>
+              <th>项目</th>
+              <th style="text-align: right"><a href="/projects">+ 更多</a></th>
+            </tr>
+          </table>
+          <div class="toRight" style="height: 4px;margin-top: -28px"></div>
+          <table class="table table-hover index-show">
+            <% @i = 0 %>
+            <% @projects.each do |r| %>
+                <%
+                  params[:id] = r.id
+
+                  if @i > 5
+                    break
+                  end
+                  @i += 1
+                  puts "#{r}"
+                %>
+                <tr>
+                  <td><%= link_to r.name, projects_path + '/' + r.id.to_s %></td>
+                </tr>
+            <% end %>
+
+          </table>
+        </div>
+      <div class="col-xs-5">
+        <table class="table">
+          <tr>
+            <th>通知</th>
+            <th style="text-align: right"><a href="/notices">+ 更多</a></th>
+          </tr>
+        </table>
+        <div class="toLeft" style="height: 4px;margin-top: -28px"></div>
+        <table class="table table-hover index-show">
+          <% @i = 0 %>
+          <% @notices.each do |r| %>
+              <%
+                 params[:id] = r.id
+                 if @i > 5
+                   break
+                 end
+                 @i += 1
+                 puts "#{r}"
+              %>
+              <tr>
+                <td><%= link_to r.title, notices_path + '/' + r.id.to_s %></td>
+                <td class="index-date"><%= r[:created_at] %></td>
+              </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+      <div class="col-xs-7">
+        <table class="table">
+          <tr>
+            <th>相关报道</th>
+            <th style="text-align: right"><a href="/articles">+ 更多</a></th>
+          </tr>
+        </table>
+        <div class="toRight" style="height: 4px;margin-top: -28px"></div>
+        <table class="table table-hover index-show">
+          <% @i = 0 %>
+          <% @articles.each do |r| %>
+              <%
+                params[:id] = r.id
+                if @i > 5
+                  break
+                end
+                @i += 1
+                puts "#{r}"
+              %>
+              <tr>
+                <td><%= link_to r.title, articles_path + '/' + r.id.to_s %></td>
+                <td class="index-date"><%= r[:created_at] %></td>
+              </tr>
+          <% end %>
+        </table>
+
+      </div>
+      <div class="col-xs-5">
+        <table class="table">
+          <tr>
+            <th>关于我们</th>
+            <!--<th style="text-align: right"><a href="/projects">+ more</a></th>-->
+          </tr>
+        </table>
+        <div class="toLeft" style="height: 4px;margin-top: -28px"></div>
+        <table class="table table-hover index-show">
+          <td>
+            <h4 style="text-align: center;font-weight: bolder;font-size: 20px">团队网站</h4>
+            <p style="text-indent: 2em">成员：陈立国、许柏宁、杨海华。</p>
+            <p style="margin-top: 40px;text-align: right">欢迎联系我们</p>
+            </td>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render 'footer' %>
